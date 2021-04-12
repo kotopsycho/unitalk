@@ -1,5 +1,8 @@
 package com.kotopsycho.unitalk.struct;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * @package com.kotopsycho.unitalk.struct
  * @Author kirain
@@ -11,10 +14,12 @@ public class Channel {
     private String channelName;
     private Boolean isEncrypted;
     private String password;
+    public volatile LinkedList<User> users;
 
     public Channel(String name, int ID){
         this.channelName = name;
         this.channelID = ID;
+        this.users = new LinkedList<>();
     }
 
     public void setName(String name){

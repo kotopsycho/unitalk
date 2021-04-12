@@ -14,12 +14,14 @@ public class Channel {
     private String channelName;
     private Boolean isEncrypted;
     private String password;
-    public volatile LinkedList<User> users;
+    private volatile LinkedList<User> users;
+    private LinkedList<Channel> childChannels;
 
     public Channel(String name, int ID){
         this.channelName = name;
         this.channelID = ID;
         this.users = new LinkedList<>();
+        childChannels = new LinkedList<>();
     }
 
     public void setName(String name){
@@ -42,5 +44,16 @@ public class Channel {
         return this.password.equals(password);
     }
 
+    public LinkedList<Channel> getChildChannels() {
+        return childChannels;
+    }
+
+    public void addChildChannel(Channel channel){
+        this.childChannels.add(channel);
+    }
+
+    public void addChildChannel(String name, int ID){
+        this.childChannels.add(new Channel(name, ID));
+    }
 
 }

@@ -16,7 +16,7 @@ public class DatagramQueue {
     //单例模式来管理udp包
     private static  DatagramQueue singleQueue;
 
-    private static volatile ConcurrentLinkedQueue<DatagramPacket> datagramQueue;
+    private static volatile ConcurrentLinkedQueue<byte[]> datagramQueue;
 
     private DatagramQueue(){
         this.datagramQueue = new ConcurrentLinkedQueue<>();
@@ -35,10 +35,15 @@ public class DatagramQueue {
 
     public boolean offer(DatagramPacket datagramPacket){
         if(datagramPacket == null) return false;
-        return datagramQueue.offer(datagramPacket);
+        return datagramQueue.offer(datagramPacket.getData());
     }
 
-    public DatagramPacket poll(){
+    public boolean offer(byte[] data){
+        if(data == null) return false;
+        return datagramQueue.offer(data);
+    }
+
+    public byte[] poll(){
         return datagramQueue.poll();
     }
 

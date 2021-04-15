@@ -13,14 +13,14 @@ public class LoadProperties {
 
     private LoadProperties(){}
 
-    private static final String filename = "config.properties";
-    private static final String defaultPort = "port = 38888\n";
+    private static final String FILE_NAME = "config.properties";
+    private static final String DEFAULT_PORT = "port = 38888\n";
 
     public static int port;
 
     public static void load(){
         try {
-            InputStream in = new BufferedInputStream(new FileInputStream(filename));
+            InputStream in = new BufferedInputStream(new FileInputStream(FILE_NAME));
             Properties properties = new Properties();
             properties.load(in);
 
@@ -39,13 +39,13 @@ public class LoadProperties {
 
     private static void init(){
 
-        File configFile = new File(filename);
+        File configFile = new File(FILE_NAME);
         try {
             configFile.createNewFile();
             FileOutputStream w = new FileOutputStream(configFile);
             OutputStreamWriter writer = new OutputStreamWriter(w, StandardCharsets.UTF_8);
 
-            writer.append(defaultPort);
+            writer.append(DEFAULT_PORT);
 
             writer.close();
             w.close();

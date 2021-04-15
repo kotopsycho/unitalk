@@ -24,18 +24,15 @@ public class UDPReceiveThread extends Thread{
             return new DatagramSocket(LoadProperties.getPort());
         } catch (SocketException e) {
             e.printStackTrace();
-            System.out.println("get scoket error, try to get a new socket");
-            getSocket();
+            System.out.println("get socket error, please check port number...");
         }
         return null;
     }
 
-
-    //todo 实现udp包的接收和加入队列
     @Override
     public void run() {
-        DatagramQueue queue = DatagramQueue.getDatagramQueue();
-        for(;;){
+        DatagramQueue queue = DatagramQueue.getInstance();
+        while(!this.isInterrupted()){
             byte[] bytes = new byte[maxReceiveLength];
             DatagramPacket p = new DatagramPacket(bytes, bytes.length);
             try {
@@ -43,6 +40,8 @@ public class UDPReceiveThread extends Thread{
                 queue.offer(p.getData());
             } catch (IOException e) {
                 e.printStackTrace();
+                System.out.println("socket receive error, try to stop this thread: " + this.toString());
+                this.interrupt();
             }
         }
     }

@@ -14,7 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class DatagramQueue {
 
     //单例模式来管理udp包
-    private static  DatagramQueue singleQueue;
+    private static DatagramQueue singleQueue;
 
     private static volatile ConcurrentLinkedQueue<byte[]> datagramQueue;
 
@@ -22,7 +22,7 @@ public class DatagramQueue {
         this.datagramQueue = new ConcurrentLinkedQueue<>();
     }
 
-    public static DatagramQueue getDatagramQueue(){
+    public static DatagramQueue getInstance(){
         if(singleQueue == null){
             synchronized (DatagramQueue.class) {
                 if (singleQueue == null){

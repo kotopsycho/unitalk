@@ -1,7 +1,5 @@
 package com.kotopsycho.unitalk.system;
 
-import com.kotopsycho.unitalk.BIO.DatagramQueue;
-
 /**
  * @package com.kotopsycho.unitalk.system
  * @Author kirain
@@ -27,6 +25,7 @@ public class OperationQueue {
 
     //操作队列
     //todo 使用ConcurrentLinkedQueue创建一个队列
+    //private static ConcurrentLinkedQueue<>
 
 
 }

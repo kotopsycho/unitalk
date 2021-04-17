@@ -1,6 +1,7 @@
 package com.kotopsycho.unitalk.BIO;
 
 import com.kotopsycho.unitalk.LoadProperties;
+import com.kotopsycho.unitalk.system.DatagramQueue;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -18,13 +19,12 @@ public class UDPReceiveThread extends Thread{
 
     private static final DatagramSocket socket = getSocket();
 
-    //todo 通过配置文件决定绑定的端口,最大长度等
     private static DatagramSocket getSocket(){
         try {
             return new DatagramSocket(LoadProperties.getPort());
         } catch (SocketException e) {
             e.printStackTrace();
-            System.out.println("get socket error, please check port number...");
+            System.out.println("get udp socket error, please check port number...");
         }
         return null;
     }

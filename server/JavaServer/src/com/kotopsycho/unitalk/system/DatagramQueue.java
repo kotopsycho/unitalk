@@ -1,11 +1,7 @@
-package com.kotopsycho.unitalk.BIO;
+package com.kotopsycho.unitalk.system;
 
 import java.net.DatagramPacket;
-import java.util.LinkedList;
-import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @Author kirain

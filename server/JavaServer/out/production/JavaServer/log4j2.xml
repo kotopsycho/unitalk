@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorinterval="0">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{32} %L %M - %msg%xEx%n"/>
+        </Console>
+        <File name="default"
+              filename="logs/server.log"
+              append="true">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{32} %L %M - %msg%xEx%n"/>
+        </File>
+        <File name="sql"
+              filename="logs/sql.log"
+              append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{32} %L %M - %msg%xEx%n"/>
+        </File>
+        <File name="net"
+              filename="logs/net.log"
+              append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{32} %L %M - %msg%xEx%n"/>
+        </File>
+
+    </Appenders>
+    <Loggers>
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="default"/>
+        </Root>
+        <Logger name="main" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="default"/>
+        </Logger>
+        <Logger name="sql" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="default"/>
+            <AppenderRef ref="sql"/>
+        </Logger>
+        <Logger name="net" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="default"/>
+            <AppenderRef ref="net"/>
+        </Logger>
+        <!--AsyncLogger name="AsyncLogger" level="all" includeLocation="true" additivity="false">
+            <AppenderRef ref="Console"/>
+        </AsyncLogger-->
+    </Loggers>
+</Configuration>

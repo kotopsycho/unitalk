@@ -7,7 +7,16 @@ package com.kotopsycho.unitalk.system;
  */
 public class ChannelManager {
 
-    //todo 使用hashmap来管理用户与频道的映射关系，
+    private ChannelManager(){}
+
+    //todo 使用hashmap来管理用户与频道的映射关系
+    private final static ChannelManager channelManager = new ChannelManager();
+
+    public ChannelManager getChannelManager(){
+        return ChannelManager.channelManager;
+    }
+
+
 
 
 }

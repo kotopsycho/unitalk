@@ -37,7 +37,7 @@ public class UDPReceiveThread extends Thread{
             DatagramPacket p = new DatagramPacket(bytes, bytes.length);
             try {
                 socket.receive(p);
-                queue.offer(p.getData());
+                queue.offer(p);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("socket receive error, try to stop this thread: " + this.toString());

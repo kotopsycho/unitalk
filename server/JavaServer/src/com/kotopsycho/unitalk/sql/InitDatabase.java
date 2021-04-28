@@ -17,7 +17,12 @@ public class InitDatabase {
     //todo 完成sql脚本的编写
 
     //建立用户表
-    private final static String usersTable = "";
+    private final static String usersTable = "create table student(" +
+            " id int," +
+            " name varchar(20)," +
+            " gender varchar(10)," +
+            " birthday date" +
+            " );";
 
     //建立频道表
     private final static String channelTable = "";
